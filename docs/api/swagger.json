@@ -1,0 +1,168 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Andino API",
+    "description": "Sistema de gestión fiscal, tributaria y contable para Chile",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Andino Team",
+      "email": "support@andino.cl"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api/v1",
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "description": "Returns the health status of the service",
+        "tags": ["Health"],
+        "responses": {
+          "200": {
+            "description": "Service is healthy",
+            "schema": {
+              "$ref": "#/definitions/HealthResponse"
+            }
+          }
+        }
+      }
+    },
+    "/hello": {
+      "get": {
+        "summary": "Hello World",
+        "description": "Returns a greeting message",
+        "tags": ["General"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "description": "Name to greet",
+            "default": "Mundo"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Greeting message",
+            "schema": {
+              "$ref": "#/definitions/HelloResponse"
+            }
+          }
+        }
+      }
+    },
+    "/dte": {
+      "get": {
+        "summary": "DTE Endpoints",
+        "description": "Information about DTE endpoints",
+        "tags": ["DTE"],
+        "responses": {
+          "200": {
+            "description": "DTE endpoints information"
+          }
+        }
+      }
+    },
+    "/payments": {
+      "get": {
+        "summary": "Payment Endpoints",
+        "description": "Information about payment endpoints",
+        "tags": ["Payments"],
+        "responses": {
+          "200": {
+            "description": "Payment endpoints information"
+          }
+        }
+      }
+    },
+    "/sii": {
+      "get": {
+        "summary": "SII Endpoints",
+        "description": "Information about SII endpoints",
+        "tags": ["SII"],
+        "responses": {
+          "200": {
+            "description": "SII endpoints information"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "HealthResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "example": "ok"
+        },
+        "service": {
+          "type": "string",
+          "example": "andino"
+        },
+        "version": {
+          "type": "string",
+          "example": "1.0.0"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "message": {
+          "type": "string",
+          "example": "¡Hola Mundo desde Andino! 🏔️"
+        }
+      }
+    },
+    "HelloResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "¡Hola Mundo desde Andino! 🇨🇱"
+        },
+        "service": {
+          "type": "string",
+          "example": "andino"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "info": {
+          "type": "string",
+          "example": "Sistema de gestión fiscal, tributaria y contable para Chile"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Health",
+      "description": "Health check endpoints"
+    },
+    {
+      "name": "General",
+      "description": "General purpose endpoints"
+    },
+    {
+      "name": "DTE",
+      "description": "Documentos Tributarios Electrónicos"
+    },
+    {
+      "name": "Payments",
+      "description": "Payment processing endpoints"
+    },
+    {
+      "name": "SII",
+      "description": "Servicio de Impuestos Internos integration"
+    }
+  ]
+}

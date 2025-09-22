@@ -1,0 +1,9 @@
+server:
+  host: "localhost"
+  port: 8080
+  read_timeout: "30s"
+  write_timeout: "30s"
+
+logging:
+  level: "info"
+  format: "json"
